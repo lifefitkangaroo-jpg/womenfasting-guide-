@@ -325,9 +325,7 @@
             padding: 30px;
             margin: 20px 0;
         
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
+            }
         
         .calendar-header {
             text-align: center;
@@ -1265,6 +1263,14 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
     }
 }
 
+
+/* Scroll only the calendar grid, keep legend fixed */
+.cal-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px; /* space for scroll bar */
+}
+
 </style>
 </head>
 <body>
@@ -1301,7 +1307,7 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
                     <h3>예시: 1월 생리주기</h3>
                     <p>생리 시작일: 1월 1일 | 배란일: 1월 15일 (생리 14일 전)</p>
                 </div>
-                <div class="calendar-grid">
+                <div class="cal-scroll"><div class="calendar-grid">
                     <div class="calendar-day header">일</div>
                     <div class="calendar-day header">월</div>
                     <div class="calendar-day header">화</div>
@@ -1401,9 +1407,8 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
                     <div class="calendar-day phase-4-bg" data-phase="4">
                         <div class="day-number">28</div>
                     </div>
-                </div>
-                
-                <div class="calendar-legend">
+                </div></div>
+                <div class=\"calendar-legend\">
                     <div class="legend-item">
                         <div class="legend-color phase-1-bg"></div>
                         <span><strong>1단계</strong> (10일): 16시간+ 단식, 저탄고지</span>
