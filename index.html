@@ -1287,6 +1287,13 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
   .product-image .icon-almond { width: 56px; height: 56px; }
 }
 
+
+/* Desktop: fit 28-day grid into container without horizontal scroll */
+@media (min-width: 901px) {
+  .cal-scroll { overflow-x: visible; }
+  .calendar-grid { grid-template-columns: repeat(7, 1fr); min-width: 0; }
+}
+
 </style>
 </head>
 <body>
