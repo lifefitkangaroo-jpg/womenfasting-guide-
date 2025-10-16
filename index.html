@@ -352,7 +352,7 @@
             gap: 8px;
             margin-bottom: 30px;
         
-            min-width: 896px; /* 120px*7 + ~gap */
+            min-width: 888px; /* 120px*7 + ~gap */
         }
         
         .calendar-day {
@@ -983,7 +983,7 @@
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 1.8em;
-            .calendar-day { min-height: 88px; 
+            .calendar-day { min-height: 96px; 
   body {
     font-size: 14px;
     line-height: 1.6;
@@ -1073,7 +1073,139 @@
                 grid-template-columns: 1fr;
             }
         }
-    </style>
+    
+/* --- Mobile-first global polish --- */
+:root {
+    --space-xxs: 6px;
+    --space-xs: 10px;
+    --space-s: 14px;
+    --space-m: 18px;
+    --radius: 12px;
+}
+
+/* Reduce unexpected overflow from long words */
+* { -webkit-tap-highlight-color: rgba(0,0,0,0.05); }
+body { overflow-wrap: anywhere; word-break: keep-all; }
+
+/* Make images/videos naturally responsive */
+img, video { max-width: 100%; height: auto; display: block; }
+
+/* Two-line clamp for day-label text */
+.day-label {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Responsive table: allow horizontal scroll without breaking semantics */
+.comparison-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    min-width: 716px;
+}
+
+/* Swipe hint badge (hidden on desktop) */
+.swipe-hint {
+    display: none;
+}
+
+/* Larger touch targets for buttons/links */
+button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
+    min-height: 80px;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+/* --- Compact layout for small mobile screens --- */
+@media (max-width: 480px) {
+    body { font-size: 13.5px; line-height: 1.65; }
+    .container { padding: 12px; }
+    .header { padding: 28px 14px; border-radius: 12px; }
+    .header h1 { font-size: 1.25em; }
+    .header p { font-size: 0.9em; }
+    .intro-box, .warning-box { padding: 14px; }
+    .section { margin-bottom: 34px; }
+    .section h2 { font-size: 1.15em; margin-bottom: 12px; }
+    .phase-card { padding: 16px; border-radius: 10px; }
+    .phase-header { gap: 10px; }
+    .phase-number { width: 44px; height: 44px; font-size: 1.1em; }
+    .phase-title h3 { font-size: 1.05em; }
+    .phase-title .duration { font-size: 0.85em; }
+    .info-grid { gap: 10px; }
+    .info-item { padding: 10px; }
+    .info-item .label { font-size: 0.85em; }
+    .info-item .value { font-size: 0.95em; }
+    .tips-box { padding: 12px; }
+    .tips-box h4 { font-size: 0.95em; }
+    .tips-box li { font-size: 0.85em; }
+    .product-link-box { padding: 12px; gap: 10px; }
+    .product-icon { font-size: 1.6em; }
+    .products-section { padding: 28px 14px; border-radius: 12px; }
+    .product-card { padding: 18px; }
+    .product-image { font-size: 3em; }
+    .product-desc { font-size: 0.95em; }
+    .product-use { padding: 10px; }
+    .product-buy-btn { padding: 10px 16px; font-size: 0.95em; }
+    .bundle-offer { padding: 18px; gap: 12px; }
+    .bundle-icon { font-size: 2.2em; }
+    .bundle-content h3 { font-size: 1.1em; }
+    .bundle-content p { font-size: 0.95em; }
+    .action-steps { padding: 24px 16px; border-radius: 12px; }
+    .step { padding: 12px; gap: 12px; }
+    .step-number { width: 36px; height: 36px; font-size: 1em; }
+    .cycle-calculator { padding: 24px 16px; border-radius: 12px; }
+    .calc-input-section { padding: 16px; gap: 12px; }
+    .date-input, .number-input { padding: 10px 12px; font-size: 1em; width: 100%; }
+    .calculate-btn { padding: 12px 18px; font-size: 1.05em; }
+    .result-section { padding: 16px; }
+    .phases-timeline { gap: 12px; }
+    .phase-item { padding: 12px; gap: 10px; }
+    .next-period { padding: 12px; font-size: 1em; }
+    .calendar-container { padding: 18px 14px; }
+    .calendar-grid { gap: 6px; }
+    .calendar-day { min-height: 96px; padding: 6px; }
+    .calendar-day.header { padding: 10px 6px; }
+    .day-number { font-size: 0.95em; }
+    .day-label { font-size: 0.7em; }
+    .copyright-footer { padding: 28px 16px; border-radius: 12px; }
+    .copyright-content h3 { font-size: 1.2em; }
+    .copyright-main { font-size: 0.95em; }
+    .copyright-note { font-size: 0.9em; }
+    .swipe-hint {
+        display: block;
+        text-align: center;
+        font-size: 0.9em;
+        margin: 8px 0 12px;
+        color: #555;
+        opacity: 0.9;
+    }
+}
+
+/* Prevent small inputs from shrinking too much in narrow grid columns */
+.input-group { min-width: 0; }
+
+
+/* Responsive calendar widths by breakpoint */
+@media (max-width: 1024px) {
+  .calendar-grid { grid-template-columns: repeat(7, 110px); min-width: 818px; }
+  .calendar-day { min-height: 92px; }
+}
+@media (max-width: 768px) {
+  .calendar-grid { grid-template-columns: repeat(7, 100px); min-width: 748px; }
+  .calendar-day { min-height: 88px; }
+}
+@media (max-width: 480px) {
+  .calendar-grid { grid-template-columns: repeat(7, 90px); min-width: 678px; }
+  .calendar-day { min-height: 80px; }
+}
+
+</style>
 </head>
 <body>
     <div class="container">
@@ -1103,7 +1235,8 @@
             <h2>📅 28일 주기 달력 예시</h2>
             <p style="margin-bottom: 20px; color: #7f8c8d;">내 생리 주기에 맞춰 아래처럼 표시해보세요!</p>
             
-             <div class="calendar-container">
+             <div class="swipe-hint">좌우로 스와이프해서 달력을 확인하세요 ↔︎</div>
+            <div class="calendar-container">
                 <div class="calendar-header">
                     <h3>예시: 1월 생리주기</h3>
                     <p>생리 시작일: 1월 1일 | 배란일: 1월 15일 (생리 14일 전)</p>
@@ -1303,7 +1436,7 @@
         <div class="section">
             <h2>📊 생리주기 4단계별 전략 한눈에 보기</h2>
             
-            <table class="comparison-table">
+            <div class="table-scroll"><table class="comparison-table">
                 <thead>
                     <tr>
                         <th>단계</th>
@@ -1343,7 +1476,7 @@
                         <td>가벼운 운동만</td>
                     </tr>
                 </tbody>
-            </table>
+            </table></div>
         </div>
 
         <div class="section">
