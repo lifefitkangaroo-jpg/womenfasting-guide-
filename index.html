@@ -326,23 +326,54 @@
             margin: 20px 0;
         
             }
+
+        /* NEW STYLE FOR CALCULATED CALENDAR */
+        #calculated-calendar-container {
+            background: rgba(255,255,255,0.1); /* light transparent background */
+            padding: 20px 0 0;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            margin-top: 25px;
+        }
+
+        /* NAVIGATION BAR STYLE */
+        .calendar-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
         
-        .calendar-header {
+        .calendar-nav-header h4 {
+            flex-grow: 1;
             text-align: center;
-            margin-bottom: 30px;
+            margin: 0;
+            font-size: 1.4em;
+            font-weight: 700;
+            color: white;
         }
         
-        .calendar-header h3 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 1.5em;
+        .nav-btn {
+            background: none;
+            border: 2px solid white;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: 700;
+            transition: background 0.2s, color 0.2s;
+            min-height: 40px; 
+            min-width: 40px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        
-        .calendar-header p {
+        .nav-btn:hover {
+            background: white;
             color: #667eea;
-            font-size: 1.15em;
-            font-weight: 600;
         }
+        /* END NAVIGATION BAR STYLE */
         
         .calendar-grid {
             display: grid;
@@ -364,6 +395,8 @@
             transition: transform 0.2s, box-shadow 0.2s;
         
             min-height: 96px;
+            background: #f8f9fa; /* default background for uncolored days */
+            color: #2c3e50; /* default text color */
         }
         
         .calendar-day.header {
@@ -1167,7 +1200,7 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
     .next-period { padding: 12px; font-size: 1.05em; }
     .calendar-container { padding: 18px 14px; }
     .calendar-grid { gap: 6px; }
-    .calendar-day { min-height: 96px; padding: 6px; }
+    .calendar-day { min-height: 80px; padding: 6px; }
     .calendar-day.header { padding: 10px 6px; }
     .day-number { font-size: 1.05em; }
     .day-label { font-size: 0.8em; }
@@ -1293,7 +1326,6 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
   .cal-scroll { overflow-x: visible; }
   .calendar-grid { grid-template-columns: repeat(7, 1fr); min-width: 0; }
 }
-
 </style>
 </head>
 <body>
@@ -1431,7 +1463,7 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
                         <div class="day-number">28</div>
                     </div>
                 </div></div>
-                <div class=\"calendar-legend\">
+                <div class="calendar-legend">
                     <div class="legend-item">
                         <div class="legend-color phase-1-bg"></div>
                         <span><strong>1단계</strong> (10일): 16시간+ 단식, 저탄고지</span>
@@ -1511,7 +1543,19 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
                             </div>
                         </div>
                     </div>
-                    
+
+                    <div id="calculated-calendar-container">
+                        <div class="calendar-nav-header">
+                            <button id="prev-month-btn" class="nav-btn">◀︎</button>
+                            <h4 id="calendar-month-year"></h4>
+                            <button id="next-month-btn" class="nav-btn">▶︎</button>
+                        </div>
+                        <div class="cal-scroll">
+                            <div class="calendar-grid" id="calculated-calendar-grid">
+                                </div>
+                        </div>
+                        <div class="swipe-hint" style="color: white; margin-top: 0;">좌우로 스와이프해서 달력을 확인하세요 ↔︎</div>
+                    </div>
                     <div class="next-period">
                         <span>다음 생리 예정일:</span>
                         <strong id="next-period-date">00/00</strong>
@@ -1537,28 +1581,28 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
                 <tbody>
                     <tr>
                         <td><strong>1단계</strong></td>
-                        <td>생리 시작 ~ 배란 3일 전<br>(10~15일)</td>
+                        <td>생리 시작 ~ 배란 5일 전<br>(9일)</td>
                         <td><strong>16시간+</strong></td>
                         <td>50~100g (저탄고지)</td>
                         <td>장기단식 도전 최적기</td>
                     </tr>
                     <tr>
                         <td><strong>2단계</strong></td>
-                        <td>배란 4일 전 ~ 배란일<br>(약 5일)</td>
+                        <td>배란 4일 전 ~ 배란일<br>(5일)</td>
                         <td>13~15시간</td>
                         <td>100~150g</td>
                         <td><strong>고강도 운동 최적기</strong></td>
                     </tr>
                     <tr>
                         <td><strong>3단계</strong></td>
-                        <td>배란 후 ~ 배란 후 5일<br>(약 5일)</td>
+                        <td>배란 후 ~ 배란 후 5일<br>(6일)</td>
                         <td><strong>16시간+</strong></td>
                         <td>50~100g (저탄고지)</td>
                         <td>지방 연소 극대화</td>
                     </tr>
                     <tr>
                         <td><strong>4단계</strong></td>
-                        <td>배란 후 6일 ~ 생리 전<br>(약 8일)</td>
+                        <td>배란 후 6일 ~ 생리 전<br>(8일)</td>
                         <td>무리 금지! (12시간 이하도 OK)</td>
                         <td><strong>150g+</strong></td>
                         <td>가벼운 운동만</td>
@@ -1570,13 +1614,12 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
         <div class="section">
             <h2>📝 4단계 상세 가이드</h2>
 
-            <!-- 1단계 -->
             <div class="phase-card">
                 <div class="phase-header">
                     <div class="phase-number phase-1">1</div>
                     <div class="phase-title">
                         <h3>지방 연소 골든타임 🔥</h3>
-                        <p class="duration">생리 시작 ~ 배란 3일 전 (10~15일)</p>
+                        <p class="duration">생리 시작 ~ 배란 5일 전 (9일)</p>
                     </div>
                 </div>
                 <div class="phase-content">
@@ -1622,13 +1665,12 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
                 </div>
             </div>
 
-            <!-- 2단계 -->
             <div class="phase-card">
                 <div class="phase-header">
                     <div class="phase-number phase-2">2</div>
                     <div class="phase-title">
                         <h3>활동 최고조 기간 💃</h3>
-                        <p class="duration">배란 4일 전 ~ 배란일 (약 5일)</p>
+                        <p class="duration">배란 4일 전 ~ 배란일 (5일)</p>
                     </div>
                 </div>
                 <div class="phase-content">
@@ -1674,13 +1716,12 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
                 </div>
             </div>
 
-            <!-- 3단계 -->
             <div class="phase-card">
                 <div class="phase-header">
                     <div class="phase-number phase-3">3</div>
                     <div class="phase-title">
                         <h3>지방 대사 극대화 🔥</h3>
-                        <p class="duration">배란 후 ~ 배란 후 5일 (약 5일)</p>
+                        <p class="duration">배란 후 ~ 배란 후 5일 (6일)</p>
                     </div>
                 </div>
                 <div class="phase-content">
@@ -1722,13 +1763,12 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
                 </div>
             </div>
 
-            <!-- 4단계 -->
             <div class="phase-card">
                 <div class="phase-header">
                     <div class="phase-number phase-4">4</div>
                     <div class="phase-title">
                         <h3>유지 & 회복 기간 🌙</h3>
-                        <p class="duration">배란 후 6일 ~ 생리 전 (약 8일)</p>
+                        <p class="duration">배란 후 6일 ~ 생리 전 (8일)</p>
                     </div>
                 </div>
                 <div class="phase-content">
@@ -1932,6 +1972,161 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
     </div>
     
     <script>
+        // Global variables for state management
+        let globalCycleData = null; 
+        let globalViewDate = null; // Date object representing the 1st of the month being displayed
+
+        // Helper function to add days to a date
+        function addDays(date, days) {
+            const result = new Date(date);
+            result.setDate(result.getDate() + days);
+            return result;
+        }
+
+        // Helper function to format date as MM/DD
+        function formatDate(date) {
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${month}/${day}`;
+        }
+        
+        // Function to determine the phase of a given day (1-based cycleDay)
+        function getPhase(cycleDay, phase1End, phase2Start, phase2End, phase3Start, phase3End, phase4Start, phase4End) {
+            if (cycleDay >= 1 && cycleDay <= phase1End) return { number: 1, label: '1단계' };
+            if (cycleDay >= phase2Start && cycleDay <= phase2End) return { number: 2, label: '2단계' };
+            if (cycleDay >= phase3Start && cycleDay <= phase3End) return { number: 3, label: '3단계' };
+            if (cycleDay >= phase4Start && cycleDay <= phase4End) return { number: 4, label: '4단계' };
+            return null; 
+        }
+
+        // Function to render the calendar
+        function renderCalendar(viewDate, cycleData) {
+            if (!cycleData) return;
+
+            const { startDate, cycleLength, phaseDates } = cycleData;
+            
+            const calendarGrid = document.getElementById('calculated-calendar-grid');
+            const calendarHeader = document.getElementById('calendar-month-year');
+            calendarGrid.innerHTML = ''; // Clear previous calendar
+
+            // Calculate the date of the *next* expected period start (for labelling)
+            const nextPeriodDate = addDays(startDate, cycleLength);
+            
+            // Set the date for the calendar view: the 1st of the viewDate's month
+            const calStartDate = new Date(viewDate.getFullYear(), viewDate.getMonth(), 1);
+            const month = calStartDate.getMonth();
+            const year = calStartDate.getFullYear();
+            
+            calendarHeader.textContent = `${year}년 ${month + 1}월`;
+
+            // 1. Add day headers
+            const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+            dayNames.forEach(day => {
+                const dayHeader = document.createElement('div');
+                dayHeader.className = 'calendar-day header';
+                dayHeader.textContent = day;
+                calendarGrid.appendChild(dayHeader);
+            });
+
+            // 2. Add padding days
+            const startDayOfWeek = calStartDate.getDay(); // 0=Sun, 1=Mon...
+            for (let i = 0; i < startDayOfWeek; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'calendar-day';
+                calendarGrid.appendChild(emptyDay);
+            }
+
+            // 3. Add actual days
+            let currentDate = new Date(calStartDate);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            while (currentDate.getMonth() === month) {
+                const dayEl = document.createElement('div');
+                dayEl.className = 'calendar-day';
+
+                const dayNumber = currentDate.getDate();
+                
+                // --- Cycle Phase Calculation ---
+                const timeDiff = currentDate.getTime() - startDate.getTime();
+                let daysSinceStart = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                
+                let cycleDay = daysSinceStart + 1; // Day 1, 2, 3... of cycle
+                
+                // Normalize cycleDay to be between 1 and cycleLength
+                // This ensures dates outside the *current* cycle still display a phase based on the repeating pattern
+                while (cycleDay < 1) {
+                    cycleDay += cycleLength;
+                }
+                while (cycleDay > cycleLength) {
+                    cycleDay -= cycleLength;
+                }
+
+                let phaseInfo = null;
+                
+                if (cycleDay >= 1 && cycleDay <= cycleLength) {
+                    phaseInfo = getPhase(
+                        cycleDay, 
+                        phaseDates.phase1End, 
+                        phaseDates.phase2Start, 
+                        phaseDates.phase2End, 
+                        phaseDates.phase3Start, 
+                        phaseDates.phase3End, 
+                        phaseDates.phase4Start, 
+                        phaseDates.phase4End
+                    );
+                }
+
+                if (phaseInfo) {
+                    dayEl.classList.add(`phase-${phaseInfo.number}-bg`);
+                    dayEl.setAttribute('data-phase', phaseInfo.number);
+
+                    let dayLabelText = phaseInfo.label;
+
+                    // Assign specific labels for key dates
+                    if (cycleDay === 1) {
+                        dayLabelText = '생리 시작';
+                    } else if (cycleDay === phaseDates.phase2End) {
+                        dayLabelText = '배란일';
+                    } else if (cycleDay === phaseDates.phase4End) { 
+                        // The cycle ends on the day before the next period starts
+                        dayLabelText = '주기 종료';
+                    } else if (cycleDay === phaseDates.phase4Start) {
+                        dayLabelText = '4단계 시작';
+                    }
+                    
+                    dayEl.innerHTML = `
+                        <div class="day-number">${dayNumber}</div>
+                        <div class="day-label">${dayLabelText || ''}</div>
+                    `;
+                } else {
+                    dayEl.innerHTML = `<div class="day-number">${dayNumber}</div><div class="day-label"></div>`;
+                }
+
+                // Highlight today's date with a subtle border
+                if (currentDate.toDateString() === today.toDateString()) {
+                    dayEl.style.border = '3px solid #ffd700'; // Gold border for today
+                }
+                
+                calendarGrid.appendChild(dayEl);
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+        }
+        
+        // Navigation functions
+        function navigateMonth(delta) {
+            if (!globalCycleData) {
+                alert('먼저 생리 주기를 계산해주세요!');
+                return;
+            }
+
+            // Adjust the month of the globalViewDate
+            globalViewDate.setMonth(globalViewDate.getMonth() + delta);
+            
+            // Re-render the calendar for the new month
+            renderCalendar(globalViewDate, globalCycleData);
+        }
+
         // Cycle Calculator Logic
         document.getElementById('calculate-btn').addEventListener('click', function() {
             const periodStart = document.getElementById('period-start').value;
@@ -1947,72 +2142,102 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
                 return;
             }
             
-            // Calculate phases
-            const startDate = new Date(periodStart);
+            // Calculate phase day numbers (1-based index within cycle)
+            const ovulationDay = cycleLength - 14;
+
+            // ************** 수정된 로직 **************
+            // Phase 1: Day 1 to ovulation - 5 (9 days for 28-day cycle)
+            const phase1End = ovulationDay - 5; 
+            // Phase 2: ovulation - 4 to ovulation (5 days for 28-day cycle)
+            const phase2Start = ovulationDay - 4; 
+            const phase2End = ovulationDay;
+            // Phase 3: ovulation + 1 to ovulation + 6 (6 days)
+            const phase3Start = ovulationDay + 1; 
+            const phase3End = ovulationDay + 6;
+            // Phase 4: ovulation + 7 to end of cycle (8 days for 28-day cycle)
+            const phase4Start = ovulationDay + 7; 
+            const phase4End = cycleLength;
+            // ****************************************
+
+            // Store phase day numbers
+            const phaseDates = {
+                phase1End, 
+                phase2Start, 
+                phase2End, 
+                phase3Start, 
+                phase3End, 
+                phase4Start, 
+                phase4End
+            };
+            
+            let startDate = new Date(periodStart);
             const today = new Date();
             today.setHours(0, 0, 0, 0);
             
-            // Calculate ovulation day (14 days before next period)
-            const ovulationDay = cycleLength - 14;
+            // Determine the start date of the *current* cycle
+            let daysSinceStart = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
             
-            // Phase 1: Day 1 to ovulation - 4
-            const phase1End = ovulationDay - 4;
-            
-            // Phase 2: ovulation - 4 to ovulation
-            const phase2Start = ovulationDay - 3;
-            const phase2End = ovulationDay;
-            
-            // Phase 3: ovulation + 1 to ovulation + 6
-            const phase3Start = ovulationDay + 1;
-            const phase3End = ovulationDay + 6;
-            
-            // Phase 4: ovulation + 7 to end of cycle
-            const phase4Start = ovulationDay + 7;
-            const phase4End = cycleLength;
-            
-            // Calculate dates
-            function addDays(date, days) {
-                const result = new Date(date);
-                result.setDate(result.getDate() + days);
-                return result;
+            // If the input date is in the future, or too far in the past, adjust startDate
+            while (daysSinceStart >= cycleLength) {
+                startDate.setDate(startDate.getDate() + cycleLength);
+                daysSinceStart -= cycleLength;
             }
-            
-            function formatDate(date) {
-                const month = String(date.getMonth() + 1).padStart(2, '0');
-                const day = String(date.getDate()).padStart(2, '0');
-                return `${month}/${day}`;
+            while (daysSinceStart < 0) {
+                startDate.setDate(startDate.getDate() - cycleLength);
+                daysSinceStart += cycleLength;
             }
+
+            // Recalculate currentDay based on the adjusted startDate
+            const currentDay = daysSinceStart + 1;
             
+            // Recalculate all phase dates based on the adjusted startDate
             const phase1EndDate = addDays(startDate, phase1End - 1);
             const phase2StartDate = addDays(startDate, phase2Start - 1);
             const phase2EndDate = addDays(startDate, phase2End - 1);
             const phase3StartDate = addDays(startDate, phase3Start - 1);
             const phase3EndDate = addDays(startDate, phase3End - 1);
             const phase4StartDate = addDays(startDate, phase4Start - 1);
-            const phase4EndDate = addDays(startDate, phase4End - 1);
-            const nextPeriodDate = addDays(startDate, cycleLength);
+            const phase4EndDate = addDays(startDate, phase4End - 1); // Last day of cycle
+            const nextPeriodDate = addDays(startDate, cycleLength); // Start of next cycle
+
+            // Store global cycle data
+            globalCycleData = {
+                startDate: new Date(startDate.getTime()), // Use the adjusted startDate
+                cycleLength: cycleLength,
+                phaseDates: phaseDates
+            };
+
+            // Set initial view date (the month containing the calculated startDate)
+            globalViewDate = new Date(today.getFullYear(), today.getMonth(), 1); // Start view on the 1st of the current month
             
-            // Determine current phase
-            const daysSinceStart = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-            const currentDay = daysSinceStart + 1; // Day 1, 2, 3... of cycle
-            
-            let currentPhase = 1;
-            let phaseTitle = '1단계: 지방 연소 골든타임 🔥';
-            let phaseDesc = '16시간 이상 단식, 저탄고지 식단 집중!';
-            
-            if (currentDay >= phase2Start && currentDay <= phase2End) {
-                currentPhase = 2;
-                phaseTitle = '2단계: 활동 최고조 기간 💃';
-                phaseDesc = '고강도 운동 최적기! 13-15시간 단식';
-            } else if (currentDay >= phase3Start && currentDay <= phase3End) {
-                currentPhase = 3;
-                phaseTitle = '3단계: 지방 대사 극대화 🔥';
-                phaseDesc = '16시간 이상 단식, 키토제닉 시도하기 좋은 시기';
-            } else if (currentDay >= phase4Start && currentDay <= phase4End) {
-                currentPhase = 4;
-                phaseTitle = '4단계: 유지 & 회복 기간 🌙';
-                phaseDesc = '무리하지 말고 탄수화물 충분히! 유지만 해도 성공';
+            // Determine current phase title and description
+            const phaseInfo = getPhase(currentDay, phase1End, phase2Start, phase2End, phase3Start, phase3End, phase4Start, phase4End);
+            let currentPhase = phaseInfo ? phaseInfo.number : 0;
+            let phaseTitle = '';
+            let phaseDesc = '';
+
+            switch(currentPhase) {
+                case 1:
+                    phaseTitle = '1단계: 지방 연소 골든타임 🔥';
+                    phaseDesc = '16시간 이상 단식, 저탄고지 식단 집중!';
+                    break;
+                case 2:
+                    phaseTitle = '2단계: 활동 최고조 기간 💃';
+                    phaseDesc = '고강도 운동 최적기! 13-15시간 단식';
+                    break;
+                case 3:
+                    phaseTitle = '3단계: 지방 대사 극대화 🔥';
+                    phaseDesc = '16시간 이상 단식, 키토제닉 시도하기 좋은 시기';
+                    break;
+                case 4:
+                    phaseTitle = '4단계: 유지 & 회복 기간 🌙';
+                    phaseDesc = '무리하지 말고 탄수화물 충분히! 유지만 해도 성공';
+                    break;
+                default:
+                    phaseTitle = '주기 정보 확인 중...';
+                    phaseDesc = '정확한 계산을 위해 생리 시작일이 정확한지 확인해주세요.';
             }
+
             
             // Update UI
             document.getElementById('current-phase').textContent = `오늘은 ${phaseTitle}`;
@@ -2021,9 +2246,9 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
             document.getElementById('phase1-dates').textContent = 
                 `${formatDate(startDate)} ~ ${formatDate(phase1EndDate)} (${phase1End}일)`;
             document.getElementById('phase2-dates').textContent = 
-                `${formatDate(phase2StartDate)} ~ ${formatDate(phase2EndDate)} (5일)`;
+                `${formatDate(phase2StartDate)} ~ ${formatDate(phase2EndDate)} (${phase2End - phase2Start + 1}일)`;
             document.getElementById('phase3-dates').textContent = 
-                `${formatDate(phase3StartDate)} ~ ${formatDate(phase3EndDate)} (6일)`;
+                `${formatDate(phase3StartDate)} ~ ${formatDate(phase3EndDate)} (${phase3End - phase3Start + 1}일)`;
             document.getElementById('phase4-dates').textContent = 
                 `${formatDate(phase4StartDate)} ~ ${formatDate(phase4EndDate)} (${phase4End - phase4Start + 1}일)`;
             
@@ -2037,6 +2262,9 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
                     item.classList.remove('active');
                 }
             });
+
+            // 🌟 RENDER THE NEW CALENDAR 🌟
+            renderCalendar(globalViewDate, globalCycleData);
             
             // Show result section
             document.getElementById('result-section').style.display = 'block';
@@ -2048,11 +2276,16 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
             });
         });
         
-        // Set today as default date
+        // Initialization and Event Listeners
         document.addEventListener('DOMContentLoaded', function() {
+            // Set today as default date
             const today = new Date();
             const dateString = today.toISOString().split('T')[0];
             document.getElementById('period-start').value = dateString;
+            
+            // Add event listeners for navigation buttons
+            document.getElementById('prev-month-btn').addEventListener('click', () => navigateMonth(-1));
+            document.getElementById('next-month-btn').addEventListener('click', () => navigateMonth(1));
         });
     </script>
 </body>
