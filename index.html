@@ -1014,32 +1014,29 @@
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 1.8em;
-            .calendar-day { min-height: 96px; 
-  body {
-    font-size: 14px;
-    line-height: 1.6;
-  }
+            }
+            body {
+                font-size: 14px;
+                line-height: 1.6;
+            }
 
-  .header h1 { font-size: 1.4em; }
-  .header p { font-size: 1.05em; }
-  .calendar-day { font-size: 0.75em; }
-  .day-number { font-size: 1.05em; }
-  .day-label { font-size: 0.75em; }
-  .section h2 { font-size: 1.3em; }
-  .phase-title h3 { font-size: 1.15em; }
-  .phase-content p { font-size: 1.05em; }
-  .info-item .value { font-size: 1.05em; }
-  .tips-box li { font-size: 0.9em; }
-  .product-desc, .product-use li { font-size: 1.05em; }
-  .product-buy-btn { font-size: 1.05em; padding: 10px 18px; }
-  .bundle-content p { font-size: 1.05em; }
+            .header h1 { font-size: 1.4em; }
+            .header p { font-size: 1.05em; }
+            .calendar-day { font-size: 0.75em; }
+            .day-number { font-size: 1.05em; }
+            .day-label { font-size: 0.75em; }
+            .section h2 { font-size: 1.3em; }
+            .phase-title h3 { font-size: 1.15em; }
+            .phase-content p { font-size: 1.05em; }
+            .info-item .value { font-size: 1.05em; }
+            .tips-box li { font-size: 0.9em; }
+            .product-desc, .product-use li { font-size: 1.05em; }
+            .product-buy-btn { font-size: 1.05em; padding: 10px 18px; }
+            .bundle-content p { font-size: 1.05em; }
 
-}
             .calendar-day:not(.header) { font-size: 0.9em; }
             .day-number { font-size: 1.05em; }
             .day-label { font-size: 0.8em; }
-    
-}
             
             .info-grid {
                 grid-template-columns: 1fr;
@@ -1063,8 +1060,8 @@
                 font-size: 0.75em;
                 padding: 4px;
             
-            min-height: 96px;
-        }
+                min-height: 96px;
+            }
             
             .day-number {
                 font-size: 1.05em;
@@ -1405,7 +1402,7 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
                     </div>
                     <div class="calendar-day phase-2-bg" data-phase="2">
                         <div class="day-number">11</div>
-                        <div class="day-label">배란 4일전</div>
+                        <div class="day-label">2단계 시작</div>
                     </div>
                     <div class="calendar-day phase-2-bg" data-phase="2">
                         <div class="day-number">12</div>
@@ -1442,7 +1439,7 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
                     
                     <div class="calendar-day phase-4-bg" data-phase="4">
                         <div class="day-number">22</div>
-                        <div class="day-label">생리 1주일전</div>
+                        <div class="day-label">4단계 시작</div>
                     </div>
                     <div class="calendar-day phase-4-bg" data-phase="4">
                         <div class="day-number">23</div>
@@ -1461,12 +1458,13 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
                     </div>
                     <div class="calendar-day phase-4-bg" data-phase="4">
                         <div class="day-number">28</div>
+                        <div class="day-label">주기 종료</div>
                     </div>
                 </div></div>
                 <div class="calendar-legend">
                     <div class="legend-item">
                         <div class="legend-color phase-1-bg"></div>
-                        <span><strong>1단계</strong> (10일): 16시간+ 단식, 저탄고지</span>
+                        <span><strong>1단계</strong> (9일): 16시간+ 단식, 저탄고지</span>
                     </div>
                     <div class="legend-item">
                         <div class="legend-color phase-2-bg"></div>
@@ -1478,7 +1476,7 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
                     </div>
                     <div class="legend-item">
                         <div class="legend-color phase-4-bg"></div>
-                        <span><strong>4단계</strong> (7일): 무리 금지, 탄수화물↑</span>
+                        <span><strong>4단계</strong> (8일): 무리 금지, 탄수화물↑</span>
                     </div>
                 </div>
             </div>
@@ -1602,7 +1600,7 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
                     </tr>
                     <tr>
                         <td><strong>4단계</strong></td>
-                        <td>배란 후 6일 ~ 생리 전<br>(8일)</td>
+                        <td>배란 후 6일 ~ 생리 전<br>**(8일)**</td>
                         <td>무리 금지! (12시간 이하도 OK)</td>
                         <td><strong>150g+</strong></td>
                         <td>가벼운 운동만</td>
@@ -1768,7 +1766,7 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
                     <div class="phase-number phase-4">4</div>
                     <div class="phase-title">
                         <h3>유지 & 회복 기간 🌙</h3>
-                        <p class="duration">배란 후 6일 ~ 생리 전 (8일)</p>
+                        <p class="duration">배란 후 6일 ~ 생리 전 **(8일)**</p>
                     </div>
                 </div>
                 <div class="phase-content">
@@ -2086,13 +2084,15 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
                     // Assign specific labels for key dates
                     if (cycleDay === 1) {
                         dayLabelText = '생리 시작';
+                    } else if (cycleDay === phaseDates.phase2Start) {
+                        dayLabelText = '2단계 시작';
                     } else if (cycleDay === phaseDates.phase2End) {
                         dayLabelText = '배란일';
-                    } else if (cycleDay === phaseDates.phase4End) { 
-                        // The cycle ends on the day before the next period starts
-                        dayLabelText = '주기 종료';
                     } else if (cycleDay === phaseDates.phase4Start) {
                         dayLabelText = '4단계 시작';
+                    } else if (cycleDay === phaseDates.phase4End) { 
+                        // Day 28: The cycle ends on the day before the next period starts
+                        dayLabelText = '주기 종료';
                     }
                     
                     dayEl.innerHTML = `
@@ -2143,9 +2143,10 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
             }
             
             // Calculate phase day numbers (1-based index within cycle)
-            const ovulationDay = cycleLength - 14;
+            // Luteal Phase (3+4) is fixed at 14 days (14 days before next period start)
+            const ovulationDay = cycleLength - 14; 
 
-            // ************** 수정된 로직 **************
+            // ************** 최종 수정된 로직 **************
             // Phase 1: Day 1 to ovulation - 5 (9 days for 28-day cycle)
             const phase1End = ovulationDay - 5; 
             // Phase 2: ovulation - 4 to ovulation (5 days for 28-day cycle)
@@ -2156,7 +2157,7 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
             const phase3End = ovulationDay + 6;
             // Phase 4: ovulation + 7 to end of cycle (8 days for 28-day cycle)
             const phase4Start = ovulationDay + 7; 
-            const phase4End = cycleLength;
+            const phase4End = cycleLength; // Day 28: 주기 종료일
             // ****************************************
 
             // Store phase day numbers
@@ -2191,14 +2192,15 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
             const currentDay = daysSinceStart + 1;
             
             // Recalculate all phase dates based on the adjusted startDate
+            // Note: addDays(startDate, dayIndex - 1) because dayIndex is 1-based.
             const phase1EndDate = addDays(startDate, phase1End - 1);
             const phase2StartDate = addDays(startDate, phase2Start - 1);
             const phase2EndDate = addDays(startDate, phase2End - 1);
             const phase3StartDate = addDays(startDate, phase3Start - 1);
             const phase3EndDate = addDays(startDate, phase3End - 1);
             const phase4StartDate = addDays(startDate, phase4Start - 1);
-            const phase4EndDate = addDays(startDate, phase4End - 1); // Last day of cycle
-            const nextPeriodDate = addDays(startDate, cycleLength); // Start of next cycle
+            const phase4EndDate = addDays(startDate, phase4End - 1); // Day 28: Last day of cycle
+            const nextPeriodDate = addDays(startDate, cycleLength); // Day 29: Start of next cycle
 
             // Store global cycle data
             globalCycleData = {
@@ -2252,41 +2254,4 @@ button, .product-btn, .product-buy-btn, .bundle-btn, .calculate-btn {
             document.getElementById('phase4-dates').textContent = 
                 `${formatDate(phase4StartDate)} ~ ${formatDate(phase4EndDate)} (${phase4End - phase4Start + 1}일)`;
             
-            document.getElementById('next-period-date').textContent = formatDate(nextPeriodDate);
-            
-            // Highlight current phase
-            document.querySelectorAll('.phase-item').forEach((item, index) => {
-                if (index + 1 === currentPhase) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
-
-            // 🌟 RENDER THE NEW CALENDAR 🌟
-            renderCalendar(globalViewDate, globalCycleData);
-            
-            // Show result section
-            document.getElementById('result-section').style.display = 'block';
-            
-            // Scroll to result
-            document.getElementById('result-section').scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'nearest' 
-            });
-        });
-        
-        // Initialization and Event Listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set today as default date
-            const today = new Date();
-            const dateString = today.toISOString().split('T')[0];
-            document.getElementById('period-start').value = dateString;
-            
-            // Add event listeners for navigation buttons
-            document.getElementById('prev-month-btn').addEventListener('click', () => navigateMonth(-1));
-            document.getElementById('next-month-btn').addEventListener('click', () => navigateMonth(1));
-        });
-    </script>
-</body>
-</html>
+            document.getElementById('
